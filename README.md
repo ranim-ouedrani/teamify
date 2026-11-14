@@ -281,18 +281,7 @@ Le répertoire `documentation/` regroupe les documents relatifs à la conception
 
 ---
 
-## Équipe du projet
 
-| Membre | Responsabilité |
-|---|---|
-| Oussema Fattoumi | MS1 — Authentification et Profiling |
-| Ranim Oudrani | MS2 — Machine Learning |
-| Oussama jarraya | MS3 — Gestion des enseignants, modules et groupes |
-| Rayen Houioui | MS4 — Entraide et accompagnement entre étudiants |
-| Tasnim Hattab | MS5 — Feedback et vie sociale |
-| Rim Borchani | MS6 — Gamification |
-
----
 
 <div align="center">
 
