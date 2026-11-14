@@ -1,0 +1,45 @@
+/* La ligne @import doit rester tout en haut du fichier */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f5f6fa;
+  font-family: 'Poppins', 'Inter', 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ---------- Logo TeamiFy ---------- */
+.tm-logo { display: inline-flex; align-items: center; gap: 10px; line-height: 1; }
+.tm-logo svg { flex-shrink: 0; display: block; }
+.tm-logo-text {
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #2b3245;
+}
+.tm-logo-text b { font-weight: 800; color: #e63946; }
+
+/* Visibilité du focus clavier (accessibilité) */
+:focus-visible {
+  outline: 2px solid #e63946;
+  outline-offset: 2px;
+}
+
+/* Respecte les utilisateurs qui désactivent les animations */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* Icônes SVG (Icons.jsx) */
+.ic { flex-shrink: 0; display: inline-block; vertical-align: middle; }

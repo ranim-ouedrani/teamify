@@ -1,0 +1,189 @@
+/* =========================================================
+   Dashboard.css : design TeamiFy (clair, cartes arrondies, accent rouge)
+   Mêmes noms de classes qu'avant : aucun changement de logique.
+   ========================================================= */
+
+.dashboard-container {
+  --red: #e63946;
+  --red-dark: #c1121f;
+  --red-deep: #6d0b14;
+  --red-soft: #fdecee;
+  --ink: #1b1f3b;
+  --muted: #6b7185;
+  --line: #eceef4;
+  --bg: #f5f6fa;
+  --shadow: 0 2px 14px rgba(27, 31, 59, 0.06);
+
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Poppins', 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+.dashboard-container *,
+.dashboard-container *::before,
+.dashboard-container *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ---------- Sidebar blanche ---------- */
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 260px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 16px 20px;
+  background: #fff;
+  border-right: 1px solid var(--line);
+}
+
+.sidebar-logo { padding: 0 10px 28px; }
+
+.sidebar-menu { display: flex; flex-direction: column; gap: 6px; flex: 1; overflow-y: auto; }
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #4b5168;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: background .15s, color .15s;
+}
+.menu-item .ic { flex-shrink: 0; color: #8a90a6; transition: color .15s; }
+.menu-item:hover .ic { color: var(--ink); }
+.menu-item:hover { background: #f6f7fb; color: var(--ink); }
+.menu-item.active {
+  color: var(--red);
+  font-weight: 600;
+  background: var(--red-soft);
+  box-shadow: inset 3px 0 0 var(--red);
+}
+.menu-item.active .ic { color: var(--red); }
+
+.sidebar-footer { padding-top: 14px; border-top: 1px solid var(--line); }
+.btn-logout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 14px;
+  text-align: left;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--red);
+  background: #fff;
+  border: 1.5px solid #f6c5c9;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.btn-logout:hover { background: var(--red-soft); border-color: var(--red); }
+
+/* ---------- Contenu ---------- */
+.main-content { flex: 1; min-width: 0; padding: 22px 30px 36px; }
+
+/* barre du haut */
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 14px 22px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+.header-title h1 { font-size: 1.3rem; font-weight: 700; margin-bottom: 2px; }
+.header-title p { font-size: 0.85rem; color: var(--muted); }
+
+.header-user { display: flex; align-items: center; gap: 12px; }
+.user-role-badge {
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--red-dark);
+  background: var(--red-soft);
+  border-radius: 999px;
+}
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #ff6b76, var(--red-dark));
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #f6c5c9;
+  border-radius: 50%;
+}
+
+/* ---------- Cartes ---------- */
+.dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+.card {
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+.card h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 14px; }
+.card-sub { font-size: 0.82rem; color: var(--muted); margin: -8px 0 12px; }
+
+.stat-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.stat-header h3 { margin: 0; }
+.badge-success { padding: 4px 10px; font-size: 0.75rem; font-weight: 700; color: #166534; background: #dcfce7; border-radius: 999px; }
+
+.stat-body { display: flex; align-items: center; gap: 18px; }
+.stat-body p { font-size: 0.88rem; line-height: 1.5; color: var(--muted); }
+
+.progress-circle {
+  position: relative; width: 70px; height: 70px; flex-shrink: 0; display: grid; place-items: center;
+  font-size: 0.9rem; font-weight: 800; color: var(--red); border-radius: 50%;
+  background: conic-gradient(var(--red) 331deg, #f1e6e7 0); isolation: isolate;
+}
+.progress-circle::before { content: ''; position: absolute; inset: 7px; background: #fff; border-radius: 50%; z-index: -1; }
+
+.course-item { padding: 14px 16px; background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--red); border-radius: 14px; }
+.course-time { display: inline-block; margin-bottom: 6px; font-size: 0.78rem; font-weight: 700; color: var(--red-dark); }
+.course-item h4 { font-size: 0.98rem; margin-bottom: 4px; }
+.course-item p { font-size: 0.82rem; color: var(--muted); }
+
+.team-list { list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; }
+.team-list li { padding: 10px 12px; background: #f8f9fc; border: 1px solid var(--line); border-radius: 12px; }
+
+.quiz-result { display: flex; justify-content: space-between; align-items: center; padding: 14px; font-size: 0.92rem; background: #f8f9fc; border-radius: 14px; }
+.score-good { color: #15803d; font-size: 1rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .dashboard-container { flex-direction: column; }
+  .sidebar {
+    position: static; height: auto; width: 100%; padding: 14px 14px 10px;
+    border-right: 0; border-bottom: 1px solid var(--line);
+  }
+  .sidebar-logo { padding-bottom: 12px; }
+  .sidebar-menu { flex-direction: row; overflow-x: auto; padding-bottom: 8px; }
+  .menu-item { white-space: nowrap; }
+  .menu-item.active { box-shadow: inset 0 -3px 0 var(--red); }
+  .sidebar-footer { padding-top: 8px; }
+  .main-content { padding: 16px 14px 28px; }
+}
+@media (max-width: 520px) {
+  .dashboard-header { flex-direction: column; align-items: flex-start; }
+  .header-title h1 { font-size: 1.15rem; }
+}
+
+.user-name { font-size: 0.88rem; font-weight: 600; }
+@media (max-width: 520px) { .user-name { display: none; } }

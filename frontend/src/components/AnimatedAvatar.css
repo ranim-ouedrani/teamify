@@ -1,0 +1,24 @@
+/* Animations des avatars : flottement, clignement, salut, queue, flamme… */
+.av { display: block; overflow: visible; }
+.av * { transform-box: fill-box; transform-origin: center; }
+
+.av-float { animation: av-float 3.2s ease-in-out infinite; }
+.av-eye { animation: av-blink 4.5s infinite; }
+.av-wave { transform-origin: 50% 10%; animation: av-wave 1.6s ease-in-out infinite; }
+.av-tail { transform-origin: 0% 100%; animation: av-wag 1.4s ease-in-out infinite; }
+.av-flap-l { transform-origin: 100% 20%; animation: av-flap 1.8s ease-in-out infinite; }
+.av-flap-r { transform-origin: 0% 20%; animation: av-flap 1.8s ease-in-out infinite reverse; }
+.av-flame { transform-origin: 50% 0%; animation: av-flame .35s ease-in-out infinite alternate; }
+.av-pulse { animation: av-pulse 1.4s ease-in-out infinite; }
+.av-spark { animation: av-spark 2s ease-in-out infinite; }
+
+@keyframes av-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes av-blink { 0%, 92%, 100% { transform: scaleY(1); } 96% { transform: scaleY(0.1); } }
+@keyframes av-wave { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-28deg); } }
+@keyframes av-wag { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(14deg); } }
+@keyframes av-flap { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-12deg); } }
+@keyframes av-flame { from { transform: scaleY(0.8); } to { transform: scaleY(1.25); } }
+@keyframes av-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
+@keyframes av-spark { 0%, 100% { transform: scale(0.6) rotate(0); opacity: .5; } 50% { transform: scale(1.2) rotate(40deg); opacity: 1; } }
+
+.av-still *, .av-still { animation: none !important; }

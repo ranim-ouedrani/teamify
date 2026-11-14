@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: gamification-service
+
+  datasource:
+    # Identifiants lus depuis les variables d'environnement (aucun mot de passe en dur)
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:gamification_db}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: ${MYSQL_USER:root}
+    password:
+    hikari:
+      # Pas d'échec immédiat du pool ; l'état de la base reste visible via /actuator/health.
+      # NB : avec ddl-auto=update, Hibernate a besoin de MySQL au démarrage pour créer la table.
+      initialization-fail-timeout: -1
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      # update : crée / met à jour automatiquement la table `avatar` dans gamification_db
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+server:
+  port: ${SERVER_PORT:8083}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
+# Swagger UI : http://localhost:8083/swagger-ui/index.html
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  # Seuls les endpoints du CRUD Avatar sont documentés
+  paths-to-match: /avatars/**
+  swagger-ui:
+    path: /swagger-ui.html
+    display-request-duration: true
